@@ -29,3 +29,6 @@ Also, as there was not a "Person" lookup table provided (there were lookup table
 To combine the datasets, a column needed to be added to both the data.train.x and the data.test.x datasets, "TestOrTrain", to define whether they related to either the "Test" or "Train" datasets respectively ("data.train.temp" and "data.test.temp").  This will allow us to horizontally combine the two datasets into one dataset ("data.combo.temp").  
 
 Next, from the new dataset "data.combo.temp", the mean and std dev columns for each feature were extracted using the "melt" command and a "grep" statement to create a "narrow" dataset "data.melt.final", which contains a single row for each feature measurement, whether mean or std dev.  
+
+Lastly, the dataset "data.melt.final" was aggregated by Person, Activity, TestOrTrain (so data was not lost/removed in final dataset), and Feature to create the aggregate dataset "data.aggr.final".  
+ 

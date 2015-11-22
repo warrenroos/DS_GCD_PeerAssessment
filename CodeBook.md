@@ -148,13 +148,14 @@ Per the assignment, after adding in a column TestOrTrain to each of the above da
 
 - data.combo.temp = row combining of data.train.temp, data.test.temp 
 
-## Temp Dataset - Extracting out Mean and SD for each Feature of Combined Dataset 
+## Final Dataset - Extracting out Mean and SD for each Feature of Combined Dataset 
 
 Per the Assignment, the columns related to Mean and Std (Standard Deviation) were extracted from the above dataset to create a new dataset to reduce the # of columns in our dataset.  At the same time, I consolidated the columns for mean and std dev for each feature, creating a narrow dataset using the melt commnd and the grep statement. 
 
 - data.melt.final = vertically filtering for colunns related to Mean and Std (Standard Deviation), plus making key value pairs leveraging the melt command and the grep statement. 
-This results in a 5 variable dataset, and 813,621 rows.  
 
+This results in a 5 variable dataset, and 813,621 rows.  
+ 
 - personID - the subject / person with which the measurement is associated
 
 - activityID - the activity with which the measurement is associated 
@@ -165,3 +166,20 @@ This results in a 5 variable dataset, and 813,621 rows.
 
 - value - the measurement itself 
 
+## Final Dataset - Aggregate Dataset 
+
+Per the Assignment, the dataset "data.melt.final" was aggregated by Person, Activity, TestOrTrain (so agtgributes were not lost/removed in final dataset), and Feature to create the aggregate dataset "data.aggr.final".  
+
+- data.aggr.final = aggregating data and finding mean of values 
+
+This results in a 5 variable dataset, and 14,220 rows.  
+
+- personID - the subject / person with which the measurement is associated
+
+- activityID - the activity with which the measurement is associated 
+
+- TestOrTrain - a code field relating whether this measurement was related to the Test or Train DataSet {"train", "test"}
+
+- featureName - the feature name with which the measurement is associated 
+
+- Mean.value - the mean of measurements 

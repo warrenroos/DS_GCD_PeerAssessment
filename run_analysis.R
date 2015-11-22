@@ -310,4 +310,12 @@ data.combo.temp <- rbind(data.train.temp, data.test.temp)
 #   melt() the dataset to create in essence key-value pairs for the feature values 
 data.melt.final <- melt(data.combo.temp, id=c("personID", "activityID", "TestOrTrain"), variable.name = "featureName", measure.vars = grep("mean|std", colnames(data.combo.temp), value = TRUE))
 
-write.table(data.melt.final, file = "data.melt.final.txt", row.names = FALSE)
+# summarize by Person, Activity, Test or Train, and Feature 
+data.aggr.final <- data.melt.final %>% 
+  group_by(personID, activityID, TestOrTrain, featureName) %>% 
+  summarize(Mean.value = mean(value)) 
+
+# write results to file 
+write.table(data.melt.final, file = "..\\..\\Data\\data.melt.final.txt", row.names = FALSE)
+write.table(data.aggr.final, file = "..\\..\\Data\\data.aggr.final.txt", row.names = FALSE)
+ 
